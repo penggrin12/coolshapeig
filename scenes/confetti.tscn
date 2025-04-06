@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs1piyjl3peg2"]
+
+[ext_resource type="Script" uid="uid://s0rx3i6qoob1" path="res://src/Confetti.cs" id="1_xjk0n"]
+
+[node name="Confetti" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_xjk0n")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

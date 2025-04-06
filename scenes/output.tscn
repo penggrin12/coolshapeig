@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://daruvaj3gnbvk"]
+
+[ext_resource type="Script" uid="uid://dboj4fli66gsl" path="res://src/Output.cs" id="1_dt3wm"]
+[ext_resource type="SystemFont" uid="uid://g7u7yqibeshl" path="res://assets/mono_font.tres" id="1_rhkpb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h62cy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt3wm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h62cy"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cf7os"]
+bg_color = Color(0.07, 0.07, 0.07, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0d74"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Output" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
+script = ExtResource("1_dt3wm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h62cy")
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Output:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="CopyButton" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dt3wm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h62cy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cf7os")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0d74")
+text = "    Copy to Clipboard    "
+
+[node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dt3wm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h62cy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cf7os")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0d74")
+text = "    Clear    "
+
+[node name="Content" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_rhkpb")
+theme_override_fonts/mono_font = ExtResource("1_rhkpb")
+theme_override_font_sizes/mono_font_size = 14
+theme_override_font_sizes/normal_font_size = 14
+scroll_following = true

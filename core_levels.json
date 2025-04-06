@@ -1,0 +1,62 @@
+{
+  "$type": "core_levels",
+  "$v": 1,
+  "levels": [
+    {
+      "$type": "level_info",
+      "$v": 1,
+      "shape_size": { "x": 2, "y": 2, "z": 2 },
+      "shape_code": "return BLUE",
+      "default_user_code": "-- Many common colors are already defined globally (like BLUE, RED, or DARK_GREEN), try using one of them.\nreturn WHITE"
+    },
+    {
+      "$type": "level_info",
+      "$v": 1,
+      "shape_size": { "x": 4, "y": 1, "z": 1 },
+      "shape_code": "-- Use the 'x' coordinate to change the color.\nif x < 2 then\n  return RED\nelse\n  return GREEN\nend",
+      "default_user_code": "-- The 'x' variable holds the x-coordinate (0 to 3 here).\nreturn WHITE"
+    },
+    {
+      "$type": "level_info",
+      "$v": 1,
+      "shape_size": { "x": 3, "y": 3, "z": 3 },
+      "shape_code": "-- Use the 'y' coordinate.\n-- The ternary function is like 'condition ? value_if_true : value_if_false'.\nreturn ternary(y == 1, YELLOW, GRAY)",
+      "default_user_code": "-- The 'y' coordinate controls the height (0 to 2 here).\n-- Try using ternary(condition, color_a, color_b)\nreturn WHITE"
+    },
+    {
+      "$type": "level_info",
+      "$v": 1,
+      "shape_size": { "x": 2, "y": 2, "z": 5 },
+      "shape_code": "-- Use the 'z' coordinate (0 to 4 here).\nif z == 0 or z == 4 then\n  -- Make the ends cyan\n  return CYAN\nelse\n  -- Make the middle magenta\n  return MAGENTA\nend",
+      "default_user_code": "-- The 'z' coordinate controls depth.\nreturn WHITE"
+    },
+    {
+      "$type": "level_info",
+      "$v": 1,
+      "shape_size": { "x": 6, "y": 1, "z": 1 },
+      "shape_code": "-- The modulo operator '%' gives the remainder of a division.\n-- x % 2 is 0 for even x, 1 for odd x.\nreturn ternary(x % 2 == 0, BLACK, WHITE)",
+      "default_user_code": "-- Try using the modulo operator '%' to make stripes.\n-- Example: x % 2\nreturn WHITE"
+    },
+    {
+      "$type": "level_info",
+      "$v": 1,
+      "shape_size": { "x": 4, "y": 1, "z": 4 },
+      "shape_code": "-- Combine conditions using 'and' and 'or'.\nlocal is_x_even = (x % 2 == 0)\nlocal is_z_even = (z % 2 == 0)\n\nif (is_x_even and is_z_even) or (not is_x_even and not is_z_even) then\n  return DARK_RED\nelse\n  return ORANGE\nend",
+      "default_user_code": "-- Create a checkerboard pattern on the XZ plane.\n-- You might need 'and' / 'or'.\nreturn WHITE"
+    },
+    {
+      "$type": "level_info",
+      "$v": 1,
+      "shape_size": { "x": 1, "y": 8, "z": 1 },
+      "shape_code": "-- Create custom colors using Color.new(red, green, blue).\n-- Values should be 0-255.\n-- Make a gradient along the y-axis (0 to 7).\nlocal intensity = math.floor(y / 7 * 255) -- Normalize y to 0-255\nreturn Color.new(intensity, 0, 255 - intensity)",
+      "default_user_code": "-- Use Color.new(r, g, b) to create colors!\n-- r, g, b range from 0 to 255.\nreturn Color.new(128, 128, 128)"
+    },
+    {
+      "$type": "level_info",
+      "$v": 1,
+      "shape_size": { "x": 6, "y": 6, "z": 6 },
+      "shape_code": "-- Goal: Create a hollow box with a colored shell and black interior.\n-- Voxels are indexed 0 to 5 in each dimension.\nlocal max_coord = 5\n\n-- Check if the current voxel (x, y, z) is on any boundary face.\nlocal on_boundary = (x == 0 or x == max_coord or y == 0 or y == max_coord or z == 0 or z == max_coord)\n\nif on_boundary then\n  -- If on the boundary (shell), color it.\n  return STEEL_BLUE\nelse\n  -- If inside the box, make it black.\n  return BLACK\nend",
+      "default_user_code": "-- Make a hollow box.\n-- Check if x, y, or z are at the boundaries (0 or 5).\n-- Use 'or' to combine the checks.\nreturn WHITE"
+    }
+  ]
+}

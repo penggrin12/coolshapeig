@@ -1,0 +1,15 @@
+<Project Sdk="Godot.NET.Sdk/4.4.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+
+    <WarningsAsErrors>CS9057</WarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Chickensoft.Introspection" Version="2.2.0" />
+    <PackageReference Include="Chickensoft.Introspection.Generator" Version="2.2.0" />
+    <PackageReference Include="Chickensoft.Serialization" Version="2.2.0" />
+    <PackageReference Include="Chickensoft.Serialization.Godot" Version="0.7.11" />
+    <PackageReference Include="LuaCSharp" Version="0.4.2" />
+  </ItemGroup>
+</Project>

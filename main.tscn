@@ -1,0 +1,167 @@
+[gd_scene load_steps=9 format=3 uid="uid://dacssm7x2pn6p"]
+
+[ext_resource type="Script" uid="uid://mv1bcf3fp1vd" path="res://src/GameManager.cs" id="1_272bh"]
+[ext_resource type="Script" uid="uid://drdxsfkarjn2k" path="res://src/LevelsManager.cs" id="2_5vw27"]
+[ext_resource type="Script" uid="uid://ck1ivu5pxy0w5" path="res://src/ResetableSplitContainer.cs" id="4_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bq6v4y8yd33vo" path="res://scenes/code_editor.tscn" id="5_efxa6"]
+[ext_resource type="PackedScene" uid="uid://daruvaj3gnbvk" path="res://scenes/output.tscn" id="6_dg77c"]
+[ext_resource type="PackedScene" uid="uid://bbuagihbir8up" path="res://scenes/shape_preview.tscn" id="7_ycdy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
+bg_color = Color(0.223103, 0.223103, 0.223103, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_272bh")
+
+[node name="LevelsManager" type="Node" parent="GameManager"]
+script = ExtResource("2_5vw27")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.165656, 0.165656, 0.165656, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7dm0k")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/autohide = 0
+
+[node name="ResetableSplitContainer" type="Node" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer"]
+script = ExtResource("4_4c57u")
+metadata/_custom_type_script = "uid://ck1ivu5pxy0w5"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/autohide = 0
+
+[node name="ResetableSplitContainer" type="Node" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer"]
+script = ExtResource("4_4c57u")
+
+[node name="CodeEditor" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer" instance=ExtResource("5_efxa6")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Output" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer" instance=ExtResource("6_dg77c")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/autohide = 0
+
+[node name="ResetableSplitContainer" type="Node" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2"]
+script = ExtResource("4_4c57u")
+metadata/_custom_type_script = "uid://ck1ivu5pxy0w5"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="SampleShapePreview" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2/PanelContainer/MarginContainer" instance=ExtResource("7_ycdy4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Try to copy this:"
+horizontal_alignment = 1
+
+[node name="ZoomLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 12
+text = "Zoom: 0.0"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2/PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="UserShapePreview" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2/PanelContainer2/MarginContainer" instance=ExtResource("7_ycdy4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2/PanelContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Preview:"
+horizontal_alignment = 1
+
+[node name="ZoomLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/VSplitContainer2/PanelContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 12
+text = "Zoom: 0.0"
+horizontal_alignment = 1

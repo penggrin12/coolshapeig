@@ -1,0 +1,41 @@
+[gd_resource type="CodeHighlighter" script_class="LuaHighlighter" load_steps=2 format=3 uid="uid://bchfgg8ktel1b"]
+
+[ext_resource type="Script" uid="uid://daonv1ij6wk8b" path="res://src/LuaHighlighter.cs" id="1_xfkjm"]
+
+[resource]
+number_color = Color(0.619608, 0.52549, 0.784314, 1)
+symbol_color = Color(0.439216, 0.733333, 1, 1)
+function_color = Color(1, 0.596078, 0.247059, 1)
+member_variable_color = Color(0.439216, 0.733333, 1, 1)
+keyword_colors = {
+"and": Color(0.439216, 0.733333, 1, 1),
+"break": Color(0.439216, 0.733333, 1, 1),
+"do": Color(0.439216, 0.733333, 1, 1),
+"else": Color(0.439216, 0.733333, 1, 1),
+"elseif": Color(0.439216, 0.733333, 1, 1),
+"end": Color(0.439216, 0.733333, 1, 1),
+"false": Color(0.439216, 0.733333, 1, 1),
+"for": Color(0.439216, 0.733333, 1, 1),
+"function": Color(0.439216, 0.733333, 1, 1),
+"if": Color(0.439216, 0.733333, 1, 1),
+"in": Color(0.439216, 0.733333, 1, 1),
+"local": Color(0.439216, 0.733333, 1, 1),
+"nil": Color(0.439216, 0.733333, 1, 1),
+"not": Color(0.439216, 0.733333, 1, 1),
+"or": Color(0.439216, 0.733333, 1, 1),
+"repeat": Color(0.439216, 0.733333, 1, 1),
+"return": Color(0.439216, 0.733333, 1, 1),
+"then": Color(0.439216, 0.733333, 1, 1),
+"true": Color(0.439216, 0.733333, 1, 1),
+"until": Color(0.439216, 0.733333, 1, 1),
+"while": Color(0.439216, 0.733333, 1, 1)
+}
+color_regions = {
+"\" \"": Color(0.439216, 1, 0.733333, 1),
+"' '": Color(0.439216, 1, 0.733333, 1),
+"--": Color(0.529412, 0.529412, 0.529412, 1),
+"--[[ ]]": Color(0.529412, 0.529412, 0.529412, 1),
+"[[ ]]": Color(0.439216, 1, 0.733333, 1)
+}
+script = ExtResource("1_xfkjm")
+metadata/_custom_type_script = "uid://daonv1ij6wk8b"

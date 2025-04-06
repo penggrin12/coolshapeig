@@ -1,0 +1,204 @@
+[gd_scene load_steps=19 format=3 uid="uid://bq6v4y8yd33vo"]
+
+[ext_resource type="Script" uid="uid://cmjdgcfwj2k68" path="res://src/CodeEditor.cs" id="1_mjoov"]
+[ext_resource type="CodeHighlighter" uid="uid://bchfgg8ktel1b" path="res://assets/lua_highlighter.tres" id="1_uoi7k"]
+[ext_resource type="SystemFont" uid="uid://g7u7yqibeshl" path="res://assets/mono_font.tres" id="1_wbhed"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpfte"]
+bg_color = Color(0.147672, 0.147672, 0.147672, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbhed"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhtl5"]
+bg_color = Color(0.58828, 0.84, 0.3192, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bnu2"]
+bg_color = Color(0.455217, 0.65, 0.247, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbhed"]
+bg_color = Color(0.541176, 0.768627, 0.294118, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mjoov"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cuei"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2u8o"]
+bg_color = Color(0.07, 0.07, 0.07, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owig2"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjoov"]
+bg_color = Color(0.967467, 0.384218, 0.326039, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoibm"]
+bg_color = Color(0.748483, 0.155656, 0.126168, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtavd"]
+bg_color = Color(0.941176, 0.266667, 0.219608, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoi7k"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cpfte"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uoi7k"]
+
+[node name="CodeEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_mjoov")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cpfte")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="RowColumnLabel" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "99,99"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wbhed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fhtl5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2bnu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wbhed")
+text = "    Run    "
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mjoov")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0cuei")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f2u8o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_owig2")
+text = "    Save    "
+
+[node name="LoadButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mjoov")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0cuei")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f2u8o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_owig2")
+text = "    Load    "
+
+[node name="ClearButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wbhed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mjoov")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yoibm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtavd")
+text = "    Clear    "
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_uoi7k")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="CodeEdit" type="CodeEdit" parent="VBoxContainer/PanelContainer2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_wbhed")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cpfte")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uoi7k")
+text = "return WHITE"
+minimap_draw = true
+syntax_highlighter = ExtResource("1_uoi7k")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+line_folding = true
+line_length_guidelines = Array[int]([0, 4, 8, 12])
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true

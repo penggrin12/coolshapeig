@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxl8vglfsv7kc"]
+
+[ext_resource type="Shader" uid="uid://dh737wmu16xqf" path="res://assets/shaders/voxel.gdshader" id="1_pxout"]
+[ext_resource type="Texture2D" uid="uid://cm7bk8qhk8788" path="res://assets/images/13.png" id="2_745oj"]
+[ext_resource type="ArrayMesh" uid="uid://do33x14ou7ho8" path="res://assets/smooth_cube.obj" id="3_otv2f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhjci"]
+render_priority = 0
+shader = ExtResource("1_pxout")
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/tex = ExtResource("2_745oj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_inqj3"]
+
+[node name="Voxel" type="StaticBody3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+material_override = SubResource("ShaderMaterial_qhjci")
+mesh = ExtResource("3_otv2f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("BoxShape3D_inqj3")

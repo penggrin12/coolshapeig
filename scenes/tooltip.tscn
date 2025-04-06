@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2oikr1xvwx4l"]
+
+[ext_resource type="Script" uid="uid://k7j4sdt242f1" path="res://src/Tooltip.cs" id="1_7dicn"]
+
+[node name="Tooltip" type="Control"]
+visible = false
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7dicn")
+
+[node name="Panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 9.0
+offset_bottom = 31.0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Content" type="RichTextLabel" parent="Panel/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "abc"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=3 uid="uid://c21qxg866f52j"]
+
+[ext_resource type="Shader" uid="uid://ck4m3vhc6flhg" path="res://assets/shaders/shape_preview_ground.gdshader" id="1_686cd"]
+[ext_resource type="Texture2D" uid="uid://b56y6u1t45u1y" path="res://assets/images/6.png" id="2_v872r"]
+[ext_resource type="SystemFont" uid="uid://g7u7yqibeshl" path="res://assets/mono_font.tres" id="3_a68tj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o44xh"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_686cd"]
+sky_material = SubResource("ProceduralSkyMaterial_o44xh")
+
+[sub_resource type="Environment" id="Environment_v872r"]
+sky = SubResource("Sky_686cd")
+ambient_light_source = 2
+ambient_light_color = Color(0.678944, 0.678944, 0.678944, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v872r"]
+render_priority = 0
+shader = ExtResource("1_686cd")
+shader_parameter/tex = ExtResource("2_v872r")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a68tj"]
+material = SubResource("ShaderMaterial_v872r")
+size = Vector2(32, 32)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_686cd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_686cd"]
+shading_mode = 0
+albedo_color = Color(1, 0.18, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_686cd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mdev"]
+shading_mode = 0
+albedo_color = Color(0.18, 1, 0.207333, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a68tj"]
+shading_mode = 0
+albedo_color = Color(0.18, 0.562667, 1, 1)
+
+[node name="ShapePreviewWorld" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v872r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+fov = 65.0
+size = 5.105
+
+[node name="HoverRay" type="RayCast3D" parent="Camera3D"]
+unique_name_in_owner = true
+top_level = true
+target_position = Vector3(0, 0, -15)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Voxels" type="Node3D" parent="Node3D"]
+unique_name_in_owner = true
+
+[node name="Gizmo" type="MeshInstance3D" parent="Node3D"]
+unique_name_in_owner = true
+mesh = SubResource("PlaneMesh_a68tj")
+skeleton = NodePath("../..")
+
+[node name="X" type="MeshInstance3D" parent="Node3D/Gizmo"]
+transform = Transform3D(-3.49691e-10, 0, 4, 0, 1, 0, -0.008, 0, -1.74846e-07, 4, 0.00100005, 0)
+mesh = SubResource("PlaneMesh_686cd")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_686cd")
+
+[node name="Label3D" type="Label3D" parent="Node3D/Gizmo/X"]
+transform = Transform3D(125, 0, 1.38778e-17, 0, 1, 0, -1.73472e-15, 0, 1, 0, 0.05, 1)
+pixel_size = 0.0025
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "+X"
+font = ExtResource("3_a68tj")
+
+[node name="Y" type="MeshInstance3D" parent="Node3D/Gizmo"]
+transform = Transform3D(0.008, 0, 0, 0, 8, 0, 0, 0, 0.004, 0, 4, 0)
+mesh = SubResource("BoxMesh_686cd")
+surface_material_override/0 = SubResource("StandardMaterial3D_4mdev")
+
+[node name="Label3D2" type="Label3D" parent="Node3D/Gizmo/Y"]
+transform = Transform3D(-1.09278e-05, 0, 500, 0, 0.125, 0, -250, 0, -2.18557e-05, 0, 0.505, 0)
+pixel_size = 0.0025
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "+Y"
+font = ExtResource("3_a68tj")
+
+[node name="Z" type="MeshInstance3D" parent="Node3D/Gizmo"]
+transform = Transform3D(0.008, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0.00100005, 4)
+mesh = SubResource("PlaneMesh_686cd")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_a68tj")
+
+[node name="Label3D3" type="Label3D" parent="Node3D/Gizmo/Z"]
+transform = Transform3D(-5.46392e-06, 0, 500, 0, 1, 0, -0.25, 0, -4.37115e-08, 0, 0.05, 1)
+pixel_size = 0.0025
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "+Z"
+font = ExtResource("3_a68tj")
